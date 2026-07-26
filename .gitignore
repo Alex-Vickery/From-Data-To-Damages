@@ -1,0 +1,34 @@
+# Dependencies (project currently has none, kept for future npm tooling)
+node_modules/
+
+# Build / output
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Claude Code local session/tool state — not part of the deployed app
+.claude/

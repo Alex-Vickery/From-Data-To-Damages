@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      From Data to Damages: Comparator-based methods for estimating overcharge
+    </title>
+    <script>
+      // Applied before first paint to avoid a flash of the wrong theme
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t === "dark")
+            document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- File protocol warning -->
+    <div id="file-warning" style="display: none">
+      <div class="file-protocol-warning">
+        <div class="warning-content">
+          <h2>Local server required</h2>
+          <p>
+            This app uses ES modules, which browsers block when opened directly
+            from the filesystem. Start a local server instead:
+          </p>
+          <code>npx serve .</code>
+          <p>or</p>
+          <code>python -m http.server 8000</code>
+          <p>Then open the URL shown in your terminal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cover screen -->
+    <div id="cover-screen" class="cover-screen">
+      <div class="cover-content">
+        <div class="cover-eyebrow"></div>
+        <h1>
+          From Data To Damages: Comparator-based Methods For Estimating
+          Overcharge.
+        </h1>
+        <p>An Application To A Price-Fixing Cartel.</p>
+        <button id="cover-start-btn" class="cover-start-btn">Begin →</button>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="app-title">
+        From Data to Damages:
+        <span>Comparator-based methods for estimating overcharge</span>
+      </div>
+      <div class="header-controls">
+        <span class="keyboard-hint"> Use keys 1–5 to change tabs &nbsp;|&nbsp; Use &lt; & &gt; to navigate
+          &nbsp;|&nbsp; Use R to resample the data</span>
+        </span>
+        <button
+          id="theme-toggle"
+          class="theme-toggle-btn"
+          title="Toggle dark mode"
+        ></button>
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="tab-bar" role="tablist" aria-label="Dashboard tabs">
+      <button
+        class="tab-btn active"
+        data-tab="module1"
+        id="tab-module1"
+        role="tab"
+        aria-selected="true"
+        aria-controls="module1"
+      >
+        <span class="tab-number">1</span>
+        <svg
+          class="tab-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="18" cy="5" r="3" />
+          <circle cx="6" cy="12" r="3" />
+          <circle cx="18" cy="19" r="3" />
+          <line x1="8.59" y1="10.51" x2="15.42" y2="6.51" />
+          <line x1="8.59" y1="13.49" x2="15.42" y2="17.49" /></svg
+        >Supply Chain
+      </button>
+      <button
+        class="tab-btn"
+        data-tab="module2"
+        id="tab-module2"
+        role="tab"
+        aria-selected="false"
+        aria-controls="module2"
+      >
+        <span class="tab-number">2</span>
+        <svg
+          class="tab-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="18" y1="20" x2="18" y2="10" />
+          <line x1="12" y1="20" x2="12" y2="4" />
+          <line x1="6" y1="20" x2="6" y2="14" /></svg
+        >Data
+      </button>
+      <button
+        class="tab-btn"
+        data-tab="module3"
+        id="tab-module3"
+        role="tab"
+        aria-selected="false"
+        aria-controls="module3"
+      >
+        <span class="tab-number">3</span>
+        <svg
+          class="tab-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+          <polyline points="17 6 23 6 23 12" /></svg
+        >Regression Analysis
+      </button>
+      <button
+        class="tab-btn"
+        data-tab="module4"
+        id="tab-module4"
+        role="tab"
+        aria-selected="false"
+        aria-controls="module4"
+      >
+        <span class="tab-number">4</span>
+        <svg
+          class="tab-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" /></svg
+        >Time Comparator
+      </button>
+      <button
+        class="tab-btn"
+        data-tab="module5"
+        id="tab-module5"
+        role="tab"
+        aria-selected="false"
+        aria-controls="module5"
+      >
+        <span class="tab-number">5</span>
+        <svg
+          class="tab-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <path
+            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+          /></svg
+        >Geographic Comparator
+      </button>
+    </nav>
+
+    <!-- Tab content -->
+    <div
+      id="module1"
+      class="tab-content tab-shown active"
+      role="tabpanel"
+      aria-labelledby="tab-module1"
+    ></div>
+    <div
+      id="module2"
+      class="tab-content"
+      role="tabpanel"
+      aria-labelledby="tab-module2"
+    ></div>
+    <div
+      id="module3"
+      class="tab-content"
+      role="tabpanel"
+      aria-labelledby="tab-module3"
+    ></div>
+    <div
+      id="module4"
+      class="tab-content"
+      role="tabpanel"
+      aria-labelledby="tab-module4"
+    ></div>
+    <div
+      id="module5"
+      class="tab-content"
+      role="tabpanel"
+      aria-labelledby="tab-module5"
+    ></div>
+
+    <!-- D3 (vendored) -->
+    <script src="lib/d3.v7.min.js"></script>
+
+    <!-- App -->
+    <script type="module" src="js/app.js"></script>
+
+    <!-- File protocol detection -->
+    <script>
+      if (location.protocol === "file:") {
+        document.getElementById("file-warning").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
