@@ -37,11 +37,11 @@ export function buildPanelEquationHTML(spec = {}) {
     legend.push(['φ', 'linear time trend — the steady drift in prices']);
   }
   if (includeCostControl) {
-    terms.push('β·InputCost<sub>t</sub>');
+    terms.push('β·Cost<sub>t</sub>');
     legend.push(['β', 'input cost index (fertiliser/energy/packaging) — supply-cost control']);
   }
   if (includeShockControl) {
-    terms.push('θ·MacroShock<sub>t</sub>');
+    terms.push('θ·Shock<sub>t</sub>');
     legend.push(['θ', 'one-off import cost shock']);
   }
 
