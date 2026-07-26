@@ -98,7 +98,7 @@ const STEPS = [
   {
     label: "From a line to individual points",
     caption:
-      "Regression models work directly on the raw data, in this case the individual time-price) pairs.",
+      "Regression models work directly on the raw data, in this case the individual time-price pairs.",
     reveals: { points: true },
   },
   {

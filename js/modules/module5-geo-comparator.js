@@ -324,7 +324,7 @@ export function createGeoComparatorTab(container) {
               x0: 0,
               x1: p.cartelStart,
               color: "var(--clr-observed)",
-              label: `Cartelists’ before price: £${tPre.toFixed(0)}`,
+              label: `Cartelists’ before: £${tPre.toFixed(0)}`,
             },
             {
               id: "tdur",
@@ -332,7 +332,7 @@ export function createGeoComparatorTab(container) {
               x0: p.cartelStart,
               x1: p.cartelEnd,
               color: "var(--clr-observed)",
-              label: `Cartelists’ during price: £${tDur.toFixed(0)}`,
+              label: `Cartelists’ during: £${tDur.toFixed(0)}`,
             },
             {
               id: "cpre",
@@ -340,7 +340,7 @@ export function createGeoComparatorTab(container) {
               x0: 0,
               x1: p.cartelStart,
               color: "var(--clr-secondary)",
-              label: `Comparator before price: £${cPre.toFixed(0)}`,
+              label: `Comparator before: £${cPre.toFixed(0)}`,
             },
             {
               id: "cdur",
@@ -348,7 +348,7 @@ export function createGeoComparatorTab(container) {
               x0: p.cartelStart,
               x1: p.cartelEnd,
               color: "var(--clr-secondary)",
-              label: `Comparator during price: £${cDur.toFixed(0)}`,
+              label: `Comparator during: £${cDur.toFixed(0)}`,
             },
           ]
         : [],

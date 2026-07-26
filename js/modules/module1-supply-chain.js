@@ -549,7 +549,7 @@ export function createSupplyChainTab(container) {
         );
 
       // Single label, vertically + horizontally centred — same template for every box
-      const fontPx = box.w < 130 ? 12 : 15;
+      const fontPx = box.w < 130 ? 13 : 16;
       const lines = wrapLabel(box.label, box.w, fontPx);
       const midY = tier.y + tier.h / 2;
       const lineH = fontPx + 1;

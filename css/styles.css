@@ -1108,12 +1108,12 @@ input[type="range"]::-moz-range-thumb:active {
 .chain-label-main {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
 }
 .chain-label-main--sm {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 /* Side-gutter label base — same family/size/weight as the rest of the
@@ -1127,7 +1127,7 @@ input[type="range"]::-moz-range-thumb:active {
   font-family: var(--font-body);
   font-style: italic;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 /* Tier labels ("Apple growers", "Direct purchasers", "Class members") —
@@ -1160,7 +1160,7 @@ input[type="range"]::-moz-range-thumb:active {
   font-family: var(--font-body);
   font-style: italic;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.03em;
   fill: var(--clr-navy);
 }
@@ -1770,7 +1770,7 @@ input[type="range"]::-moz-range-thumb:active {
 .equation-panel--bare .equation-main {
   margin-bottom: 0;
   white-space: nowrap;
-  font-size: clamp(0.75rem, 0.45vw + 0.55rem, var(--fs-sm));
+  font-size: clamp(0.6875rem, 0.35vw + 0.45rem, 0.875rem);
 }
 .equation-panel--bare .equation-legend {
   display: none;
