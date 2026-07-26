@@ -349,6 +349,10 @@ export function createGeoComparatorTab(container) {
               x1: p.cartelEnd,
               color: "var(--clr-secondary)",
               label: `Comparator during: £${cDur.toFixed(0)}`,
+              // On the final "parallel trends" step, the diverging
+              // comparator trend pulls this label close enough to the DiD
+              // bracket label below it to overlap — nudge it up clear.
+              dy: violations.trendDivergence ? -25 : 0,
             },
           ]
         : [],

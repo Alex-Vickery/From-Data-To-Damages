@@ -557,11 +557,13 @@ export function bindGroupAvgLines(chart) {
     // Label text wears ink (CSS class); the coloured line carries identity.
     // Anchored at the segment's own midpoint (not its edge) so the four
     // labels naturally separate from each other and from the boundary
-    // event-lines, rather than clustering at a shared edge.
+    // event-lines, rather than clustering at a shared edge. Optional `dy`
+    // nudges an individual label further (e.g. to dodge another label that
+    // only overlaps in specific story steps).
     texts.enter().append('text').attr('class', 'group-avg-label')
       .attr('text-anchor', 'middle').attr('opacity', 0)
       .merge(texts).transition(t)
-      .attr('x', d => chart.xScale((d.x0 + d.x1) / 2)).attr('y', d => chart.yScale(d.y) - 10)
+      .attr('x', d => chart.xScale((d.x0 + d.x1) / 2)).attr('y', d => chart.yScale(d.y) - 10 + (d.dy || 0))
       .attr('opacity', 1)
       .text(d => d.label);
 
