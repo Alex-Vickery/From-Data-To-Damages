@@ -43,10 +43,10 @@ export function createSceneTab(container) {
 
   // ── Story Reveals ────────────────────────────────────────────────────────
   const CAPTIONS = [
-    'Monthly prices from January 2013 - December 2023. The blue line is the average price across the three cartelists — toggle "Show the individual cartelists’ prices to see each cartel member’s own price series.',
-    "The competition authority’s investigation found that price coordination began in January 2015 and continued until December 2018.",
-    "Because this is a simulated dataset, we know the true counterfactual price — the price that would have been charged, absent the cartel.",
-    "The difference between the observed and counterfactual price is the overcharge — our goal is to recover this even though, in practice, the true counterfactual price is unobserved.",
+    "Monthly prices from January 2013 - December 2023. The blue line is the average price across the three cartelists.",
+    "The competition authority’s investigation found that the cartel began in Jan 2015 and continued until Dec 2018.",
+    "Because this is a simulated dataset, we know the true counterfactual price.",
+    "The difference between the observed and counterfactual price is the overcharge.",
   ];
 
   let reveals = { cartel: false, counterfactual: false, overcharge: false };
@@ -332,13 +332,13 @@ export function createSceneTab(container) {
   });
 
   // ── View options ──────────────────────────────────────────────────────────
-  createSectionHeading(controlCol, "Display Other Price Series");
+  createSectionHeading(controlCol, "Other Price Series");
   const viewGroup = document.createElement("div");
   viewGroup.className = "pill-group";
   controlCol.appendChild(viewGroup);
 
   const membersPill = createPillToggle(viewGroup, {
-    label: "Show the individual cartelists’ prices",
+    label: "Individual Cartelists’ Prices",
     value: false,
   });
   membersPill.onChange((v) => {
@@ -347,7 +347,7 @@ export function createSceneTab(container) {
   });
 
   const averagesPill = createPillToggle(viewGroup, {
-    label: "Show the average clean & cartel period prices",
+    label: "Average Prices",
     value: false,
   });
   averagesPill.onChange((v) => {
@@ -362,7 +362,7 @@ export function createSceneTab(container) {
   // comparator tabs' metrics sidebar) ─────────────────────────────────────
   createSectionHeading(controlCol, "Overcharge Summary");
   const ocCard = createOcCard(controlCol, {
-    estimateLabel: "Difference in average prices",
+    estimateLabel: "Diff. In Avg. Prices",
   });
 
   function updateStatBoxes(truth, estimate) {

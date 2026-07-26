@@ -98,7 +98,7 @@ const STEPS = [
   {
     label: "From a line to individual points",
     caption:
-      "Regression models work directly on the raw data, in this case individual (time, price) pairs.",
+      "Regression models work directly on the raw data, in this case the individual time-price) pairs.",
     reveals: { points: true },
   },
   {
@@ -109,19 +109,19 @@ const STEPS = [
   {
     label: "Residuals — and how to shrink them",
     caption: () =>
-      `The vertical gaps between the data points and the line are residuals. The purpose of regression is to find the exact intercept and gradient parameters that minimize the Sum of Squared Residuals (SSR).`,
+      `The vertical gaps between the data points and the line are residuals.`,
     reveals: { points: true, guessLine: true, guessResid: true },
   },
   {
     label: "The line of best fit",
     caption:
-      "This is the line of best fit. It systematically over-predicts the clean period and under-predicts the cartel period — the residuals aren’t random — this tells us our model is missing a key variable.",
+      "This is the line of best fit. It systematically over-predicts the clean period and under-predicts the cartel period.",
     reveals: { points: true, fitLine: true, fitResid: true },
   },
   {
     label: "A pattern the line cannot see",
     caption:
-      "The cause is the cartel. During the cartel period, prices increased by a fixed amount above the baseline trend. A single straight line cannot capture this sudden jump.",
+      "The cause is the cartel. A single straight line cannot capture this sudden jump.",
     reveals: {
       points: true,
       fitLine: true,
@@ -132,7 +132,7 @@ const STEPS = [
   {
     label: "Enter the cartel dummy",
     caption:
-      "Adding a dummy variable (equal to 1 during the cartel, 0 otherwise) allows the trend line to shift upward. The size of this intercept shift then becomes our estimate of the overcharge.",
+      "Adding a dummy variable (equal to 1 during the cartel, 0 otherwise) allows the trend line to shift upward.",
     reveals: {
       points: true,
       cartelRegion: true,
@@ -145,7 +145,7 @@ const STEPS = [
     caption: () => {
       const fit = fitWithDummy();
       const delta = fit.beta[fit.names.indexOf("cartel")];
-      return `The dummy variable shifts the intercept upward during the cartel period, creating two parallel lines. The dark green line is the counterfactual price, and the gap between them (≈ £${Math.round(delta)}/tonne) is the overcharge.`;
+      return `The dummy variable shifts the intercept upward during the cartel period, creating two parallel lines.`;
     },
     reveals: {
       line: true,

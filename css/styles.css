@@ -977,13 +977,21 @@ input[type="range"]::-moz-range-thumb:active {
 .group-avg-label,
 .bracket-label {
   font-family: var(--font-body);
-  font-size: var(--fs-sm);
   font-weight: 700;
   fill: var(--clr-text);
   paint-order: stroke;
   stroke: var(--clr-surface);
   stroke-width: 4.5px;
   stroke-linejoin: round;
+}
+.bracket-label {
+  font-size: var(--fs-sm);
+}
+/* Geo Comparator (Tab 5) only — matches .legend-label/.event-label's size
+   rather than the larger .bracket-label, since it's the same "small
+   in-chart print" role, not a delta callout */
+.group-avg-label {
+  font-size: var(--fs-xs);
 }
 
 /* ─── Teaching Caption ───────────────────────────────────────────────── */
@@ -1762,7 +1770,7 @@ input[type="range"]::-moz-range-thumb:active {
 .equation-panel--bare .equation-main {
   margin-bottom: 0;
   white-space: nowrap;
-  font-size: clamp(0.8125rem, 0.6vw + 0.65rem, var(--fs-base));
+  font-size: clamp(0.75rem, 0.45vw + 0.55rem, var(--fs-sm));
 }
 .equation-panel--bare .equation-legend {
   display: none;

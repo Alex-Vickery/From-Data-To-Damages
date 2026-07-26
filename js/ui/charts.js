@@ -597,18 +597,25 @@ export function bindPoints(chart, key, config = {}) {
   };
 }
 
-// Legend
+// Legend. anchor: 'end' (default) hugs the top-right corner, swatch to the
+// left of right-aligned text; 'start' hugs the top-left corner instead,
+// swatch to the left of left-aligned text — for charts whose data leaves
+// the top-left corner empty (e.g. the Geo Comparator, where prices track
+// well below the y-axis max).
 export function createLegend(chart, items, config = {}) {
-  const { xOffset = 0, yOffset = 0 } = config;
+  const { xOffset = 0, yOffset = 0, anchor = 'end' } = config;
   let g = chart.gRoot.select('.legend-group');
   if (g.empty()) g = chart.gRoot.append('g').attr('class', 'legend-group');
   g.selectAll('*').remove();
 
   items.forEach((item, i) => {
-    const x = chart.width - 10 - xOffset;
     const y = i * 22 + 4 + yOffset;
+    const x = anchor === 'start' ? 10 + xOffset : chart.width - 10 - xOffset;
+    const swatchX1 = anchor === 'start' ? x : x - 24;
+    const swatchX2 = anchor === 'start' ? x + 20 : x - 4;
+    const textX = anchor === 'start' ? x + 26 : x - 30;
 
-    const swatch = g.append('line').attr('x1', x - 24).attr('x2', x - 4)
+    const swatch = g.append('line').attr('x1', swatchX1).attr('x2', swatchX2)
       .attr('y1', y).attr('y2', y)
       .attr('stroke', item.color).attr('stroke-width', item.strokeWidth || STROKE_MAIN);
     if (item.dash) swatch.attr('stroke-dasharray', item.dash);
@@ -616,8 +623,8 @@ export function createLegend(chart, items, config = {}) {
 
     // Legend text wears ink; the swatch carries identity
     g.append('text').attr('class', 'legend-label')
-      .attr('x', x - 30).attr('y', y + 4)
-      .attr('text-anchor', 'end')
+      .attr('x', textX).attr('y', y + 4)
+      .attr('text-anchor', anchor === 'start' ? 'start' : 'end')
       .text(item.label);
   });
 }

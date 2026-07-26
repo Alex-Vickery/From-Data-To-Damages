@@ -52,7 +52,7 @@ const STEPS = [
   {
     label: "Picking up where regression left off",
     caption:
-      "Using a cartel dummy implicitly assumes that the clean periods (before and after the cartel) are a suitable baseline for estimating the overcharge - this approach is referred to as using a time-based comparator.",
+      "Using a cartel dummy assumes that the clean periods are a suitable baseline for estimating the overcharge.",
     dgp: { ...M4_BASE },
     model: { ...MODEL_CORE },
     reveals: { fitted: true, ocArea: true, residuals: true },
@@ -61,7 +61,7 @@ const STEPS = [
     label: "Cartels don’t end cleanly: the run-off",
     tone: "bad",
     caption:
-      'Prices can remain elevated after the cartel ends. Ignoring this "run-off" period pulls the clean baseline upward, underestimating the true overcharge.',
+      'Ignoring the "run-off" period pulls the clean baseline upward, underestimating the true overcharge.',
     dgp: { ...M4_BASE, runOffEnabled: true },
     model: { ...MODEL_CORE },
     reveals: { fitted: true, ocArea: true, residuals: true },
@@ -70,7 +70,7 @@ const STEPS = [
     label: "A tempting shortcut: stretch the dummy",
     tone: "bad",
     caption:
-      "Extending the cartel dummy through the run-off period doesn't fix the issue - averaging over decaying prices mechanically reduces the estimated overcharge.",
+      "Extending the cartel dummy through the run-off period doesn't fix the issue.",
     dgp: { ...M4_BASE, runOffEnabled: true },
     model: { ...MODEL_CORE, extendCartelDummy: true },
     reveals: { fitted: true, ocArea: true, residuals: true },
@@ -78,7 +78,7 @@ const STEPS = [
   {
     label: "Fix: annual run-off dummies",
     caption:
-      "Including separate annual run-off dummies lets the model track the decaying prices - ensuring an accurate overcharge estimate.",
+      "Including separate annual run-off dummies lets the model track the decaying prices.",
     dgp: { ...M4_BASE, runOffEnabled: true },
     model: { ...MODEL_CORE, runOffYearDummies: 2 },
     reveals: { fitted: true, ocArea: true, residuals: true },
@@ -87,7 +87,7 @@ const STEPS = [
     label: "A hidden cost driver",
     tone: "warn",
     caption:
-      "If unmodeled input costs spike during the cartel, that effect leaks into the cartel coefficient — this is called omitted-variable bias and (in this case) inflates the estimate.",
+      "If unmodeled input costs spike during the cartel, that effect leaks into the cartel coefficient.",
     dgp: { ...M4_BASE, runOffEnabled: true, confoundEnabled: true },
     model: { ...MODEL_CORE, runOffYearDummies: 2 },
     reveals: { fitted: true, ocArea: true, residuals: true },
@@ -95,7 +95,7 @@ const STEPS = [
   {
     label: "Fix: control for input costs",
     caption:
-      "Adding the cost variable to the model isolates its effect, removing the bias and returning our estimated overcharge back to its true value.",
+      "Adding the cost variable to the model isolates its effect, removing the bias.",
     dgp: { ...M4_BASE, runOffEnabled: true, confoundEnabled: true },
     model: { ...MODEL_CORE, includeCostControl: true, runOffYearDummies: 2 },
     reveals: { fitted: true, ocArea: true, residuals: true },
@@ -103,7 +103,7 @@ const STEPS = [
   {
     label: "Everything on — and it still works",
     caption:
-      "A fully and correctly specified model accurately isolates the overcharge even in messy data — regression can handle complexity, but not misspecification.",
+      "A fully and correctly specified model accurately isolates the overcharge even in messy data.",
     dgp: {
       ...M4_BASE,
       confoundEnabled: true,

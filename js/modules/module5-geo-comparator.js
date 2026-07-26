@@ -52,7 +52,7 @@ const STEPS = [
   {
     label: "Mark the period averages",
     caption:
-      "The geographic comparator approach—known as difference-in-differences—is built from just four numbers, the average price before and during the cartel in each market, isolating the relative change in price attributable to the cartel.",
+      "The geographic comparator approach — known as difference-in-differences — is built from just four numbers.",
     reveals: { comparator: true, avgLines: true },
     violations: {},
     includeGroupTrend: false,
@@ -60,7 +60,7 @@ const STEPS = [
   {
     label: "Take first differences",
     caption:
-      "Subtracting the comparator’s price shift from the cartelised market’s price shift cancels out their shared trends, isolating the ~£75 overcharge.",
+      "Subtracting the comparator’s price shift from the cartelised market’s price shift cancels out their shared trends.",
     reveals: { comparator: true, avgLines: true, diff1: true },
     violations: {},
     includeGroupTrend: false,
@@ -69,7 +69,7 @@ const STEPS = [
     label: "Pitfall: umbrella pricing",
     tone: "warn",
     caption:
-      "If cartelised prices leak into the comparator market (umbrella effects), the Difference-in-Differences approach fails, mechanically reducing the estimated overcharge.",
+      "If cartelised prices leak into the comparator market (umbrella effects), the Difference-in-Differences approach fails.",
     reveals: { comparator: true, avgLines: true, diff1: true, did: true },
     violations: { contamination: true },
     includeGroupTrend: false,
@@ -78,7 +78,7 @@ const STEPS = [
     label: "Pitfall: parallel trends",
     tone: "bad",
     caption:
-      "DiD assumes that, absent the cartel, prices evolve in parallel (parallel trends). If the markets were actually on different trajectories, the model wrongly attributes that divergence to the cartel.",
+      "If the markets were actually on different trajectories, the model wrongly attributes that divergence to the cartel.",
     reveals: { comparator: true, avgLines: true, diff1: true },
     violations: { trendDivergence: true },
     includeGroupTrend: false,
@@ -409,10 +409,11 @@ export function createGeoComparatorTab(container) {
           color: "var(--clr-secondary)",
         },
       ],
-      // Shifted down (clears the "Dec 2018" label above the plot) and
-      // slightly right, into the chart's marginRight gutter — this is as far
-      // right as it can go before the swatch lines clip past the SVG's edge.
-      { xOffset: -33, yOffset: 20 },
+      // Anchored to the plot's top-left (north-west) corner instead of the
+      // default top-right — this chart's prices sit well below the y-axis
+      // max, so the top-left corner is empty space with nothing to clash
+      // with, unlike the top-right where the "Dec 2018" event label lives.
+      { anchor: "start", xOffset: 0, yOffset: 4 },
     );
 
     const didIdx = result.names.indexOf("did");
