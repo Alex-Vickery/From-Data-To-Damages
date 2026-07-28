@@ -44,12 +44,6 @@ Extends the regression from Tab 3 into a full model capable of handling real-wor
 
 Introduces the Difference-in-Differences (DiD) method, which estimates the overcharge by comparing the cartelised market against a similar, uncartelised comparator market used to represent the counterfactual. The tab walks through the mechanics of DiD — period averages, first differences, and the final DiD estimate — before turning to two ways this method can fail in practice: **umbrella effects** contaminating the comparator market, and a violation of the **parallel trends** assumption underlying the whole approach.
 
----
-
-### Developer Note
-
-This is a static, client-side app (HTML/CSS/vanilla JS + D3.js, all dependencies vendored locally). Because it uses ES modules, it must be served over HTTP rather than opened directly from disk — run `npx serve .` or `python -m http.server` in this directory and open the printed local URL.
-
 ## License
 
 ### Alexander Vickery
