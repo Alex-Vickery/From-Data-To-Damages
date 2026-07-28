@@ -207,7 +207,7 @@ export function createSupplyChainTab(container) {
 
   const rhoUpSlider = createSliderGroup(controlsPanel, {
     id: "sc-rho-up",
-    label: "Upstream pass-on (%)",
+    label: "Upstream Pass-On (%)",
     category: "purchaser",
     min: 0,
     max: 100,
@@ -224,7 +224,7 @@ export function createSupplyChainTab(container) {
 
   const rhoDownSlider = createSliderGroup(controlsPanel, {
     id: "sc-rho-down",
-    label: "Downstream pass-on (%)",
+    label: "Downstream Pass-On (%)",
     category: "consumer",
     min: 0,
     max: 100,
@@ -241,7 +241,7 @@ export function createSupplyChainTab(container) {
 
   const umbrellaSlider = createSliderGroup(controlsPanel, {
     id: "sc-umbrella",
-    label: "Umbrella effect (%)",
+    label: "Umbrella Effect (%)",
     category: "umbrella",
     min: 0,
     max: 100,
@@ -637,7 +637,7 @@ export function createSupplyChainTab(container) {
 
   const harmTitle = document.createElement("h3");
   harmTitle.className = "panel-heading";
-  harmTitle.textContent = "Who bears the impact of the overcharge?";
+  harmTitle.textContent = "Who Bears the Impact of the Overcharge?";
   harmChartWrap.appendChild(harmTitle);
 
   const harmSVGWrap = document.createElement("div");
@@ -935,13 +935,13 @@ export function createSupplyChainTab(container) {
 
     umbrellaLabel
       .attr("opacity", 1)
-      .text(`Umbrella effect = £${umbrellaToFirm.toFixed(1)}/t`);
+      .text(`Umbrella Effect = £${umbrellaToFirm.toFixed(1)}/t`);
     umbrellaUpstreamLabel
       .attr("opacity", 1)
-      .text(`Upstream pass-on = ${(rhoUp * 100).toFixed(0)}%`);
+      .text(`Upstream Pass-On = ${(rhoUp * 100).toFixed(0)}%`);
     umbrellaDownstreamLabel
       .attr("opacity", 1)
-      .text(`Downstream pass-on = ${(rhoDown * 100).toFixed(0)}%`);
+      .text(`Downstream Pass-On = ${(rhoDown * 100).toFixed(0)}%`);
 
     // Downstream flow layers (main + umbrella), fading toward a point
     const dsMainCX = cartelCX,

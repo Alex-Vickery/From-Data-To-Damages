@@ -1444,6 +1444,14 @@ input[type="range"]::-moz-range-thumb:active {
   transform: scale(0.97);
 }
 
+.cover-disclaimer {
+  margin: 18px 0 0;
+  font-size: var(--fs-xs);
+  font-style: italic;
+  color: var(--clr-text-dim);
+  text-align: center;
+}
+
 /* ─── Chart Hover & Tooltip ──────────────────────────────────────────── */
 /* Invisible widened hit strokes live in a top-most clipped group (gHit) so
    a line is hoverable well beyond its painted pixels */

@@ -24,7 +24,7 @@ import {
   createLegend,
 } from "../ui/charts.js";
 import {
-  createPillToggle,
+  createToggleSwitch,
   createSectionHeading,
   createStoryLayout,
   createStoryBottomBar,
@@ -334,11 +334,11 @@ export function createSceneTab(container) {
   // ── View options ──────────────────────────────────────────────────────────
   createSectionHeading(controlCol, "Other Price Series");
   const viewGroup = document.createElement("div");
-  viewGroup.className = "pill-group";
+  viewGroup.className = "toggle-list";
   controlCol.appendChild(viewGroup);
 
-  const membersPill = createPillToggle(viewGroup, {
-    label: "Individual Cartelists’ Prices",
+  const membersPill = createToggleSwitch(viewGroup, {
+    label: "Cartelists’ Prices",
     value: false,
   });
   membersPill.onChange((v) => {
@@ -346,7 +346,7 @@ export function createSceneTab(container) {
     renderChart();
   });
 
-  const averagesPill = createPillToggle(viewGroup, {
+  const averagesPill = createToggleSwitch(viewGroup, {
     label: "Average Prices",
     value: false,
   });

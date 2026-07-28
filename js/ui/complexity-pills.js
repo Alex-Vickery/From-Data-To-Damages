@@ -6,8 +6,8 @@ import { createToggleSwitch, createSectionHeading } from "./components.js";
 
 export const COMPLEXITY_FEATURES = [
   { key: "trendEnabled", label: "Time Trend" },
-  { key: "rampUpEnabled", label: "Ramp-up", warn: true },
-  { key: "runOffEnabled", label: "Run-off", warn: true },
+  { key: "rampUpEnabled", label: "Ramp-Up", warn: true },
+  { key: "runOffEnabled", label: "Run-Off", warn: true },
   { key: "macroShockEnabled", label: "Macro Shock" },
   { key: "confoundEnabled", label: "Confounder" },
   { key: "seasonalityEnabled", label: "Seasonality" },
