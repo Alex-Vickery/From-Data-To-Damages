@@ -1,5 +1,9 @@
 # From Data to Damages: Comparator-Based Methods for Estimating Overcharge
 
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
 *An Interactive Guide to Estimating Cartel Overcharge*
 
 ## Premise
@@ -45,3 +49,8 @@ Introduces the Difference-in-Differences (DiD) method, which estimates the overc
 ### Developer Note
 
 This is a static, client-side app (HTML/CSS/vanilla JS + D3.js, all dependencies vendored locally). Because it uses ES modules, it must be served over HTTP rather than opened directly from disk — run `npx serve .` or `python -m http.server` in this directory and open the printed local URL.
+
+## License
+
+### Alexander Vickery
+<img src="./other/logo.png" width="125px">
