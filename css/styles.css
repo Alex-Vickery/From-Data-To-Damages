@@ -173,6 +173,13 @@ body {
   line-height: 1.5;
   overflow: hidden;
   height: 100vh;
+  /* iOS/iPadOS Safari sizes `vh` against the largest viewport (toolbar
+     hidden), not the actually-visible area when its address bar is
+     showing — so 100vh overshoots and pushes bottom-docked content (e.g.
+     .story-bottom on tabs 2-5) off-screen. dvh tracks the real visible
+     viewport; browsers that don't support it just ignore this line and
+     keep the vh value above. */
+  height: 100dvh;
 }
 
 /* ─── App Shell ──────────────────────────────────────────────────────── */
@@ -317,6 +324,8 @@ body {
 .tab-content {
   display: none;
   height: calc(max(400px, 100vh - var(--header-h) - var(--tabbar-h)));
+  /* See body's 100dvh comment above — same fix, same reason. */
+  height: calc(max(400px, 100dvh - var(--header-h) - var(--tabbar-h)));
   overflow: hidden;
   opacity: 0;
   transform: translateY(4px);
@@ -342,6 +351,7 @@ body {
     overflow-y: auto;
   }
 }
+
 .tab-content.tab-shown.active {
   opacity: 1;
   transform: translateY(0);
@@ -566,6 +576,7 @@ body {
      reclaimed space to the diagram above; still caps at 230px (today's
      fixed value) on tall desktop screens. */
   grid-template-rows: 1fr clamp(150px, 24vh, 230px);
+  grid-template-rows: 1fr clamp(150px, 24dvh, 230px);
   height: 100%;
 }
 
@@ -1937,6 +1948,81 @@ input:focus-visible,
   }
   .story-side-panel .section-heading {
     margin: 10px 0 6px;
+  }
+}
+
+/* Phone landscape (iPhone Pro Max etc., ~430px tall): shorter than the
+   "small laptop" case above, and body scroll alone isn't enough because
+   several panels below still hide their own overflow and use fixed-px
+   floors (chart min-height, tab-content's 400px floor, passon's row
+   floor) that exceed what's left after chrome at this height. This block
+   shrinks those floors and lets the panels that would otherwise clip
+   their content scroll instead — scoped to orientation:landscape so it
+   never matches the taller iPad-landscape or laptop/desktop cases. Placed
+   after the 1600px block above (not with its short-viewport sibling near
+   .tab-content) so its --header-h/--tabbar-h win the cascade when both
+   this and the 1600px query match at once, which they always do here. */
+@media (max-height: 500px) and (orientation: landscape) {
+  :root {
+    --header-h: 44px;
+    --tabbar-h: 34px;
+  }
+
+  .tab-content {
+    height: calc(100vh - var(--header-h) - var(--tabbar-h));
+    height: calc(100dvh - var(--header-h) - var(--tabbar-h));
+    overflow-y: auto;
+  }
+
+  .cover-screen {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 20px 0;
+  }
+  .cover-content {
+    padding: 12px 24px;
+  }
+  .cover-content h1 {
+    font-size: clamp(1.4rem, 2vw + 1rem, 2.25rem);
+    margin: 6px 0 10px;
+  }
+  .cover-content p {
+    margin-bottom: 14px;
+  }
+
+  .story-content,
+  .story-main,
+  .passon-chain-section {
+    overflow-y: auto;
+  }
+
+  .main-chart-container,
+  .scene-chart-main {
+    min-height: 140px;
+  }
+
+  .passon-layout {
+    grid-template-rows: 1fr clamp(110px, 30vh, 150px);
+    grid-template-rows: 1fr clamp(110px, 30dvh, 150px);
+  }
+
+  .has-floating-nav {
+    padding: 0 40px;
+  }
+  .story-float-btn {
+    width: 34px;
+    height: 56px;
+    font-size: 22px;
+  }
+  .story-float-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+  .story-float-prev {
+    left: 2px;
+  }
+  .story-float-next {
+    right: 4px;
   }
 }
 
